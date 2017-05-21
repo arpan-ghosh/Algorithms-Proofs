@@ -1,0 +1,208 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{times}
+%\usepackage[in]{fullpage}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{changepage}
+\usepackage{lineno}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{hyperref}
+
+%\documentclass[11pt]{article}
+%\pagestyle{myheadings}
+%\usepackage[ruled,nothing]{algorithm}
+%\usepackage{algorithmic}
+%\usepackage[dvips]{epsfig,graphicx}
+%\numberwithin{equation}{section}
+
+\bibliographystyle{plain}
+
+\newenvironment{newalgo}[2]{\begin{algorithm}
+
+\caption{\textsc{#1}}\label{#2}
+
+\begin{algorithmic}[1]}{\end{algorithmic}\end{algorithm}}
+
+
+
+\newcommand{\gm}{\gamma}
+\newcommand{\wh}{\widehat}
+\newcommand{\rep}{representation}
+\newcommand{\rv}{random variable}
+\newcommand{\la}{\lambda}
+\newcommand{\wt}{\widetilde}
+\newcommand{\st}{such that}
+\newcommand{\slvary}{slowly varying}
+\newcommand{\ma}{moving average}
+\newcommand{\regvary}{regularly varying}
+\newcommand{\asy}{asymptotic}
+\newcommand{\ts}{time series}
+\newcommand{\id}{infinitely divisible}
+\newcommand{\seq}{sequence}
+\newcommand{\fidi}{finite dimensional \ds}
+
+\newcommand{\ble}{\begin{lemma}}
+\newcommand{\ele}{\end{lemma}}
+\newcommand{\bfX}{{\bf X}}
+\newcommand{\pro}{probabilit}
+\newcommand{\BX}{{\bf X}}
+\newcommand{\BY}{{\bf Y}}
+\newcommand{\BZ}{{\bf Z}}
+\newcommand{\BV}{{\bf V}}
+\newcommand{\BW}{{\bf W}}
+\newcommand{\reals}{{\mathbb R}}
+\newcommand{\bbr}{\reals}
+
+\newcommand{\balpha}{\mbox{\boldmath$\alpha$}}
+\newcommand{\bbeta}{\mbox{\boldmath$\beta$}}
+\newcommand{\bmu}{\mbox{\boldmath$\mu$}}
+\newcommand{\tbmu}{\mbox{\boldmath${\tilde \mu}$}}
+\newcommand{\bEta}{\mbox{\boldmath$\eta$}}
+
+
+\def \br#1{\left \{#1 \right \}}
+\def \pr#1{\left (#1 \right)}
+
+\newcommand{\Gm}{\Gamma}
+\newcommand{\ep}{\epsilon}
+
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{figur}[lemma]{Figure}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{example}[lemma]{Example}
+\newtheorem{exercise}[lemma]{Exercise}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{fig}[lemma]{Figure}
+\newtheorem{tab}[lemma]{Table}
+\newtheorem{fact}[lemma]{Fact}
+\newtheorem{test}{Lemma}
+
+\newcommand{\play}{\displaystyle}
+
+\newcommand{\ms}{measure}
+\newcommand{\beao}{\begin{eqnarray*}}
+\newcommand{\eeao}{\end{eqnarray*}\noindent}
+\newcommand{\beam}{\begin{eqnarray}}
+\newcommand{\eeam}{\end{eqnarray}\noindent}
+
+\newcommand{\halmos}{\hfill\mbox{\qed}\\}
+\newcommand{\fct}{function}
+\newcommand{\ins}{insurance}
+\newcommand{\ds}{distribution}
+
+\newcommand{\one}{{\bf 1}}
+\newcommand{\eid}{\buildrel{\rm d}\over {=}}
+\newcommand {\Or}{\rm ORDER}
+\newcommand {\In}{\rm INTER}
+
+\newcommand{\bbd}{{\mathbb D}}
+\newcommand{\vi}{$V_{ij}$ }
+\newcommand{\rr}{R^{\prime\prime}}
+%\newcommand{\R}{R^\prime}
+\newcommand{\ci}{\frac{1}{c}}
+\newcommand{\Vi}{V(n)}
+\newcommand{\dR}{\mathcal R}
+\newcommand{\md}[1]{\left(\ \rm{mod}\ \it{#1}\right)}
+\newcommand{\So}{s}
+%\begin{document}
+%\def\DoubleSpace{\baselineskip=24pt}
+%\DoubleSpace \sloppy
+
+\begin{document}
+
+
+
+\title{Homework \#8 \\ Algorithms I \\ 600.463 \\Spring 2017}
+\author{\textbf{Due on:} Thursday, April 27th, 11:59pm \\
+\textbf{Late submissions:} will NOT be accepted\\
+\textbf{Format:} Please start each problem on a new page.
+\\\textbf{Where to submit:} On Gradescope, under HW8.
+\\ Please type your answers; handwritten assignments will not be accepted.
+\\ To get full credit, your answers must be explained clearly,\\ with enough details
+and rigorous proofs.
+\\}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+
+\section{Problem 1 (20 points)}
+
+A bipartite graph $G=(V,E)$, where $V = L \cup R$, is \textit{d-regular} if every vertex $v \in V$ has degree exactly $d$.  
+\begin{itemize}
+\item[\textbf{(a)}] Show that for every \textit{d-regular} bipartite graph, $|L|=|R|$.
+\item[\textbf{(b)}] Model the maximum \textit{d-regular} bipartite matching as a max-flow problem. Show that the max-flow value from $s$ to $t$ in the formulation is $|L|$.
+\item[\textbf{(c)}] Prove that every \textit{d-regular} bipartite graph has a matching of cardinality $|L|$.
+
+\end{itemize}
+\newpage
+\section*{Problem 1 Answer}
+\begin{itemize}
+\item[\textbf{(a)}] Show that for every \textit{d-regular} bipartite graph, $|L|=|R|$.
+\newline \newline \textbf{Solution:} The proof can be simply described in the following manner.T he definition of d-regular just means that for each vertex in the L, there will be $d$ edges connecting to a vertex in R. For every edge in the graph, connect the node in R with a node in L. Then, the total number of edges is $|R|$*$d$ and $|L|$*$d$, and therefore by closure $|L| = |R|$.
+
+\item[\textbf{(b)}] Model the maximum \textit{d-regular} bipartite matching as a max-flow problem. Show that the max-flow value from $s$ to $t$ in the formulation is $|L|$.
+
+\newline \newline \textbf{Solution:} In CLRS, chapter 26, particularly in the the figure 26.3, a bipartite matching problem is reduced to a network flow and this is the exact idea that we need to use to model the d-regular bipartite matching as a max-flow problem. In the figure, every edge in the graph has unit capacity, and so we can derive a function where there is a unit flow out of every edge from $s$ and every edge into $t$. As all edges will have unit capacity, we can assume further that all edges have flow 1, from s in L and all vertices in R to t. Since every edge from $s$ is accounted for and used in the flow, then this is a maximum flow and therefore the max-flow value from $s$ to $t$ is indeed $|L|$.
+
+\item[\textbf{(c)}] Prove that every \textit{d-regular} bipartite graph has a matching of cardinality $|L|$.
+
+\newline \newline \textbf{Solution:} In CLRS Chapter 26, we get a theorem specifically Theorem 26.11 which states the Integral Theorem. If the capacity function c takes only integral values, then the maximum flow f produced by the Ford-Fulkerson method has the properpty that $|f|$ is integer-valued. For all vertices $u$ and $v$ the value $f(u,v)$ of the flow is an integer. And so since every edge in the max-flow values in the formulation showed above has an integral capacity, then there must be an integral flow with the value $|L|$ as described in the theorem. And so every $d$-regular bipartite graph has a matching of cardinality $L$.
+
+
+\end{itemize}
+
+
+\newpage
+\section{Problem 2 (20 points)}
+In the \textit{maximum k-cut} problem, we are given an undirected graph $G=(V,E)$, and non-negative weights $w_{ij} \ge 0$ for all $(i,j) \in E$. The goal is to partition the vertex set $V$ into $k$ parts $V_1, \dots, V_k$ so as to maximize the weight of all edges whose endpoints are in different parts (i.e., $\text{max}_{(i,j)\in E:i \in V_a, j\in V_b, a\ne b}w_{ij}$).\\
+Give a randomized $\frac{k-1}{k}$-approximation algorithm for the MAX $k$-CUT problem.\\
+Hint: please review Chapter 5.1 of the book---``The Design of Approximation Algorithms'' (Williamson and Shmoys 2010), and try to solve this problem using similar ideas.
+
+\newpage
+
+\section*{Problem 2 Answer}
+Here is an algorithm that partitions the vertex set $V$ into $k$ parts and maximizes the weight of all edges whose end-points are in different parts.  
+
+\begin {algorithm}[]
+    \begin{algorithmic}[1]
+        \Function{Random-Approximation}{}
+        \ForAll{$V_1, \dots, V_k$}
+        \State{}set to $null$
+        \EndFor
+        \ForAll{$i$ $\leftarrow{}$  1 to $n$}
+        \State{}uniform selection $x$ from $[0,1]$
+        \State{} \textbf{if} x \in $ [j/k, (j + 1)/k]$}
+        \newline\indent\State{}{$V_{j+1} \leftarrow V_{j+1} \cup {i}$}
+        \EndFor
+        \EndFunction{}
+    \end{algorithmic}
+\end{algorithm}
+
+\newline
+The algorithm is supposed to produce as many partitions as there are $k$. In layments term, the goal is to have a partitioning of  [0, 1) into the propoer subranges where there is also one subset per subrange. Let's note the following: (i.e., $\text{max}_{(i,j)\in E:i \in V_a, j\in V_b, a\ne b}w_{ij}$).\\
+\newline
+The entire function for assignment of the variables to the randomized uniform selection of $x$ will run in polynomial time, where the random variable is either 1 or 0, or in other words, when there is an edge connecting vertices in the different sets the variable will be set to 1 and 0 in all other cases. So, an edge can either connect vertices in the same subset or connect vertices in different subsets. It will be 1 if for some $a,b, i$ $\in$ $V_a$ and $j \in V_b$ and a$!=$b.Here is an approximation analysis proof (where $W$ is the random variable) that proves mathematically what the end goal is that I have described above with much more precision and detail. This link was found accompanied with a Google search result of Williamson and Shmoys 2010 Chapter 5.1 (courses.csail.mit.edu/6.891-s00/pss2.ps). Ultimately, we can find that the summation of $(i,j)$ $\in$ $E$ of $w_{i*j}$ multiplied by $(k-1)/k$ and thus simplified one step further that $\frac{k-1}{k}$-approximation algorithm works for this MAX $k$-CUT problem
+
+
+
+
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
